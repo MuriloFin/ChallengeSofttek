@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Histórico de Tickets</title>
+    <link rel="stylesheet" href="../css/historico.css">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="header">
+        <button type="button" class="btn btn-primary" onclick="location.href='../index.html'">Início</button>
+        <button type="button" class="btn btn-primary">Histórico</button>
+        <button type="button" class="btn btn-primary">Filtros</button>
+        <button type="button" class="btn btn-primary">Video Pitch</button>
+    </div>
+    <div class="container">
+        <div class="logo">
+            <img src="../images/logo1.jpeg" alt="Softtek Logo">
+        </div>
+        
+        <div class="history-container">
+            <h2>Histórico de Tickets</h2>
+            <form class="filter-form">
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label for="category">Categoria</label>
+                        <select id="category" class="form-control">
+                            <option selected>Escolher...</option>
+                            <option>Bug</option>
+                            <option>Desempenho</option>
+                            <option>Segurança</option>
+                            <option>Atualização</option>
+                            <option>Integração</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="keywords">Palavras-Chave</label>
+                        <input type="text" class="form-control" id="keywords" placeholder="Palavras-Chave">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="type">Tipo</label>
+                        <select id="type" class="form-control">
+                            <option selected>Escolher...</option>
+                            <option>Incidente</option>
+                            <option>Requisição</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label for="user-access">Acesso ao Usuário</label>
+                        <select id="user-access" class="form-control">
+                            <option selected>Escolher...</option>
+                            <option>Admin</option>
+                            <option>Usuário Final</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="sap">SAP</label>
+                        <select id="sap" class="form-control">
+                            <option selected>Escolher...</option>
+                            <option>Módulo FI</option>
+                            <option>Módulo MM</option>
+                            <option>Módulo SD</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="system-y">Sistema Y</label>
+                        <input type="text" class="form-control" id="system-y" placeholder="Sistema">
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Filtrar</button>
+            </form>
+            <div class="history-grid">
+                <div class="history-block resolved">
+                    <strong>Resolução de Bug:</strong> Corrigido problema de login no sistema.
+                </div>
+                <div class="history-block pending">
+                    <strong>Desempenho:</strong> Analisar lentidão no servidor de banco de dados.
+                </div>
+                <div class="history-block resolved">
+                    <strong>Atualização de Software:</strong> Sistema atualizado para a versão 2.1.0.
+                </div>
+                <div class="history-block pending">
+                    <strong>Falha de Segurança:</strong> Implementar patch de segurança crítico.
+                </div>
+                <div class="history-block resolved">
+                    <strong>Integração de API:</strong> Integração com API de terceiros concluída.
+                </div>
+                <div class="history-block pending">
+                    <strong>Backup:</strong> Verificar falha no sistema de backup.
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
