@@ -10,17 +10,31 @@ body {
 
 .header {
     display: flex;
-    justify-content: space-around;
+    justify-content: start;
+    align-items: center;
     padding: 10px;
-    background-color: transparent; 
+    background-color: #323336; 
     box-shadow: none; 
     position: fixed;
     width: 100%;
     top: 0;
     z-index: 1000;
-    background-color: #323336;
+    opacity: 95%;
 }
 
+.helptek-logo{
+    width: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.botoes{
+width: 70%;
+display: flex;
+align-items: center;
+justify-content: space-around;
+}
 
 .container {
     max-width: 800px;
@@ -38,15 +52,17 @@ body {
 }
 
 .header .btn, .chat-input .btn {
-    background-color: #00cebe;
-    border-color: #00cebe;
+    background-color: rgba(0, 0, 0, 0.0);
+    border-color: rgba(0, 0, 0, 0.0);
     color: #ffffff;
 }
 
 .header .btn:hover, .chat-input .btn:hover {
-    background-color: #00cebe;
-    border-color: #00cebe;
+    background-color: rgba(0, 0, 0, 0.0);
+    border-color: rgba(0, 0, 0, 0.0);
     filter: brightness(110%);
+    text-decoration: underline;
+    color: #96ffb5;
 }
 
 .chat-container {

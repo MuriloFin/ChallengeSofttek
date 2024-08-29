@@ -6,17 +6,36 @@
     <title>Helptek</title>
     <link rel="stylesheet" href="./css/styles.css">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="shortcut icon" type="imagex/png" href="./images/logo-helptek.ico">
 </head>
 <body>
     <div class="header">
-        <button type="button" class="btn btn-primary">Início</button>
-        <button type="button" class="btn btn-primary" onclick="location.href='./pages/historico.html'">Histórico</button>
+        <div class="helptek-logo">
+            <img src="./images/helptek-logo.png" height="80" alt="Helptek Logo">
+        </div>
+        <div class="botoes">
+        <button type="button" class="btn btn-primary">Chatbot</button>
+        <button type="button" class="btn btn-primary" onclick="location.href='./pages/historico.html'">Histórico de Soluções</button>
         <button type="button" class="btn btn-primary" onclick="location.href='./pages/filtros.html'">Filtros</button>
+        <button type="button" class="btn btn-primary" onclick="location.href='./pages/sobre.html'">Sobre nós</button>
+        <button type="button" class="btn btn-primary" onclick="location.href='./pages/equipe.html'">Equipe Helptek</button>
         <button type="button" class="btn btn-primary">Video Pitch</button>
+            </div>
     </div>
     <div class="container">
         <div class="logo">
             <img src="./images/logo1.jpeg" alt="Softtek Logo">
+        
+        </div>
+        <div> 
+            <h5>Confira nosso vídeo Pitch para mais informações sobre o projeto:</h5>
+            <button type="button" class="btn btn-success">Video Pitch</button>
+        </div>
+        <br>
+        <div>
+            <h1>Helptek - Chatbot</h1>
+            
+            <p style="font-size: 20px;">Converse com nosso Chatbot para uma resolução funcional do atual problema sendo enfrentado.</p>
         </div>
         <div class="chat-container">
             <div id="chat-history" class="chat-history"></div>
