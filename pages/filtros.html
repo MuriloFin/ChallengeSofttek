@@ -7,9 +7,10 @@
     <link rel="stylesheet" href="../css/filtros.css">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="shortcut icon" type="imagex/png" href="../images/logo-helptek.ico">
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore-compat.js"></script>
 </head>
 <body>
-  
     <div class="header">
         <div class="helptek-logo">
             <img src="../images/helptek-logo.png" height="80" alt="Helptek Logo">
@@ -17,75 +18,170 @@
         <div class="botoes">
             <button type="button" class="btn btn-primary" onclick="location.href='../index.html'">Chatbot</button>
             <button type="button" class="btn btn-primary" onclick="location.href='./historico.html'">Histórico de Soluções</button>
-        <button type="button" class="btn btn-primary">Filtros</button>
-        <button type="button" class="btn btn-primary" onclick="location.href='./sobre.html'">Sobre nós</button>
-        <button type="button" class="btn btn-primary" onclick="location.href='./equipe.html'">Equipe Helptek</button>
-        <button type="button" class="btn btn-primary">Video Pitch</button>
-            </div>
+            <button type="button" class="btn btn-primary">Filtros</button>
+            <button type="button" class="btn btn-primary" onclick="location.href='./sobre.html'">Sobre nós</button>
+            <button type="button" class="btn btn-primary" onclick="location.href='./equipe.html'">Equipe Helptek</button>
+            <button type="button" class="btn btn-primary">Video Pitch</button>
+        </div>
     </div>
+
     <div class="container">
         <div class="logo">
             <img src="../images/logo1.jpeg" alt="Softtek Logo">
         </div>
         <div>
-            <h4>Filtre soluções utilizando tags para obter soluções mais específicas do problema atual.</h4>
+            <h4>Filtre soluções utilizando o <strong>Número da Task</strong> para obter resultados mais específicos.</h4>
             <br><br>
         </div>
 
         <div class="history-container">
-            <h2>Filtros de Pesquisa</h2>
-            <form class="filter-form">
-                <div class="form-row">
-                    <div class="form-group col-md-4">
-                        <label for="category">Categoria</label>
-                        <select id="category" class="form-control">
-                            <option selected>Escolher...</option>
-                            <option>Bug</option>
-                            <option>Desempenho</option>
-                            <option>Segurança</option>
-                            <option>Atualização</option>
-                            <option>Integração</option>
-                        </select>
-                    </div>
-                    <div class="form-group col-md-4">
-                        <label for="keywords">Palavras-Chave</label>
-                        <input type="text" class="form-control" id="keywords" placeholder="Palavras-Chave">
-                    </div>
-                    <div class="form-group col-md-4">
-                        <label for="type">Tipo</label>
-                        <select id="type" class="form-control">
-                            <option selected>Escolher...</option>
-                            <option>Incidente</option>
-                            <option>Requisição</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group col-md-4">
-                        <label for="user-access">Acesso ao Usuário</label>
-                        <select id="user-access" class="form-control">
-                            <option selected>Escolher...</option>
-                            <option>Admin</option>
-                            <option>Usuário Final</option>
-                        </select>
-                    </div>
-                    <div class="form-group col-md-4">
-                        <label for="sap">SAP</label>
-                        <select id="sap" class="form-control">
-                            <option selected>Escolher...</option>
-                            <option>Módulo FI</option>
-                            <option>Módulo MM</option>
-                            <option>Módulo SD</option>
-                        </select>
-                    </div>
-                    <div class="form-group col-md-4">
-                        <label for="system-y">Sistema Y</label>
-                        <input type="text" class="form-control" id="system-y" placeholder="Sistema">
-                    </div>
+            <!-- <h2>Filtros de Pesquisa</h2> -->
+            <form class="filter-form" id="filter-form">
+                <div class="form-group">
+                    <!-- <label for="numeroTask">Número da Task</label> -->
+                    <input type="text" class="form-control" id="numeroTask" placeholder="Número da Task">
                 </div>
                 <button type="submit" class="btn btn-primary">Filtrar</button>
             </form>
+
+            <div id="results-container"></div>
         </div>
     </div>
+
+    <script type="module">
+        const firebaseConfig = {
+            apiKey: "API_KEY",
+            authDomain: "helptek-37077.firebaseapp.com",
+            projectId: "helptek-37077",
+            storageBucket: "helptek-37077.appspot.com",
+            messagingSenderId: "325627176218",
+            appId: "1:325627176218:web:e9ed561fc26baddf85f8a3",
+            measurementId: "G-PDSZEYWYZ9"
+        };
+
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+
+        document.getElementById('filter-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const numeroTask = document.getElementById('numeroTask').value.trim();
+            const resultsContainer = document.getElementById('results-container');
+            resultsContainer.innerHTML = '';
+
+            if (numeroTask !== '') {
+                db.collection("softtek-casos")
+                    .where("numero-task", "==", numeroTask)
+                    .get()
+                    .then(querySnapshot => {
+                        if (querySnapshot.empty) {
+                            resultsContainer.innerHTML = '<p>Nenhum resultado encontrado.</p>';
+                        } else {
+                            querySnapshot.forEach(doc => {
+                                const data = doc.data();
+                                const resultDiv = document.createElement('div');
+                                resultDiv.className = 'result';
+
+                                resultDiv.innerHTML = `
+                                    <h5>Número da Task: ${data["numero-task"]}</h5>
+                                    <p>Título do Problema: ${data["titulo-problema"]}</p>
+                                    <p>Nome da Empresa: ${data["nome-empresa"]}</p>
+                                    <p>Descrição do Problema: ${data["descricao-problema"]}</p>
+                                    <p>Observações: ${data["observacoes"]}</p>
+                                    <p>Solução: ${data["solucao"]}</p>
+                                `;
+
+                                resultsContainer.appendChild(resultDiv);
+                            });
+                        }
+                    })
+                    .catch(error => {
+                        console.error("Erro ao recuperar documentos: ", error);
+                        resultsContainer.innerHTML = '<p>Erro ao recuperar resultados. Tente novamente mais tarde.</p>';
+                    });
+            } else {
+                resultsContainer.innerHTML = '<p>Por favor, insira um Número da Task válido.</p>';
+            }
+        });
+    </script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('../images/background.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .header {
+            display: flex;
+            justify-content: start;
+            align-items: center;
+            padding: 10px;
+            background-color: #323336; 
+            box-shadow: none; 
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            opacity: 95%;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 100px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .logo img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 20px;
+        }
+
+        .header .btn, .chat-input .btn {
+            background-color: rgba(0, 0, 0, 0.0);
+            border-color: rgba(0, 0, 0, 0.0);
+            color: #ffffff;
+        }
+
+        .header .btn:hover, .chat-input .btn:hover {
+            background-color: rgba(0, 0, 0, 0.0);
+            border-color: rgba(0, 0, 0, 0.0);
+            filter: brightness(110%);
+            text-decoration: underline;
+            color: #96ffb5;
+        }
+
+        .history-container {
+            text-align: left;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .result {
+            border: 1px solid #ccc;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+
+        .result h5 {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .result p {
+            font-size: 14px;
+        }
+    </style>
 </body>
 </html>
