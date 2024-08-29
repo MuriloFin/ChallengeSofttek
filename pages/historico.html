@@ -34,7 +34,7 @@
                 const card = document.createElement("div");
                 card.className = `card card-${cardIndex % 2 === 0 ? 'even' : 'odd'}`;
 
-                // Criando conteúdo dos cards sem "ID" e substituindo "-" por espaços
+                
                 const cardTitle = document.createElement("h5");
                 cardTitle.className = "card-title";
                 cardTitle.innerText = formatFieldName("Número da Task") + ": " + data["numero-task"];
@@ -185,7 +185,7 @@
     color: #96ffb5;
 }
 
-        /* Estilos para os cards */
+        
         .card {
             border: 1px solid #ccc;
             padding: 15px;
@@ -217,7 +217,7 @@
             font-size: 14px;
         }
 
-        /* Estilos básicos para o modal */
+        
         .modal {
             display: none;
             position: fixed;
@@ -253,7 +253,7 @@
             cursor: pointer;
         }
 
-        /* Estilos padrão para os campos do modal */
+        
         .modal-field {
             margin-bottom: 15px;
         }
