@@ -12,8 +12,8 @@ body {
     display: flex;
     justify-content: space-around;
     padding: 10px;
-    background-color: transparent; /* Torna o fundo transparente */
-    box-shadow: none; /* Remove a sombra */
+    background-color: #323336; 
+    box-shadow: none; 
     position: fixed;
     width: 100%;
     top: 0;
@@ -21,9 +21,10 @@ body {
 }
 
 
+
 .container {
     max-width: 800px;
-    margin: 100px auto; /* Ajuste o topo para não sobrepor os botões */
+    margin: 100px auto; 
     padding: 20px;
     background-color: #ffffff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);

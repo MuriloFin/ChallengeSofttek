@@ -127,13 +127,3 @@ body {
 .filter-form button.btn.btn-primary:hover{
     filter: brightness(110%);
 }
-
-.modal-footer button{
-    background-color: #00CEBE;
-    border: none;
-}
-
-.modal-footer button:hover{
-    background-color: #00CEBE;
-    filter: brightness(110%);
-}
