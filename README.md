@@ -37,7 +37,8 @@ Antes de rodar o projeto, certifique-se de que o seu ambiente de desenvolvimento
 2. **Node.js**: Certifique-se de que o Node.js está instalado. Você pode baixá-lo [aqui](https://nodejs.org/).
 3. **Extensão Live Server**: Instale a extensão [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) no VSCode para rodar o servidor localmente.
 4. **Internet**: É necessário o uso de Internet para o projeto funcionar corretamente.
-
+5. **Git**: É necessário o uso do Git para clonagem do projeto. [GIT](https://git-scm.com/downloads)
+   
 ## Como Rodar o Projeto
 
 Siga os passos abaixo para rodar o projeto localmente:
