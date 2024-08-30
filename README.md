@@ -17,7 +17,7 @@ Helptek é uma plataforma inovadora projetada para agilizar a solução de probl
 ## Video Pitch do Projeto
 
 <div align="center">
-         <a href="https://youtu.be/u2cKK3KzYfg" target="_blank" >Video Pitch</a>
+         <a href="https://youtu.be/u2cKK3KzYfg" target="_blank" >Video Pitch</a><br>
            <a href="https://youtu.be/Gw9QmrTnLfk" target="_blank" >Video Demonstrativo do Fluxo do Projeto</a>
 </div>
 
