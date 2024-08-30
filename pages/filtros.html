@@ -7,7 +7,7 @@
     <title>Filtros de Pesquisa</title>
     <link rel="stylesheet" href="../css/filtros.css">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="shortcut icon" type="imagex/png" href="../images/logo-helptek.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="../images/logo-helptek.ico">
     <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore-compat.js"></script>
 </head>
@@ -50,7 +50,7 @@
         }
 
         async function filterResults() {
-            const taskNumber = document.getElementById('task-number').value;
+            const taskNumber = document.getElementById('task-number').value.trim();
             const companyName = document.getElementById('company-name').value;
             const resultsContainer = document.getElementById('results-container');
             resultsContainer.innerHTML = '';
@@ -61,24 +61,24 @@
                 query = query.where("numero-task", "==", taskNumber);
             }
 
-            if (companyName && companyName !== "Choose...") {
+            if (companyName && companyName !== "Escolha a Empresa") {
                 query = query.where("nome-empresa", "==", companyName);
             }
 
             try {
                 const querySnapshot = await query.get();
                 if (querySnapshot.empty) {
-                    resultsContainer.innerHTML = '<p>No results found.</p>';
+                    resultsContainer.innerHTML = '<p>Nenhum resultado encontrado.</p>';
                 } else {
                     querySnapshot.forEach(doc => {
                         const data = doc.data();
                         const resultItem = document.createElement('div');
                         resultItem.className = 'result-item';
                         resultItem.innerHTML = `
-                            <p><strong>Task Number:</strong> ${data["numero-task"]}</p>
-                            <p><strong>Company Name:</strong> ${data["nome-empresa"]}</p>
-                            <p><strong>Title:</strong> ${data["titulo-problema"]}</p>
-                            <p><strong>Description:</strong> ${data["descricao-problema"]}</p>
+                            <p><strong>Número da Task:</strong> ${data["numero-task"]}</p>
+                            <p><strong>Nome da Empresa:</strong> ${data["nome-empresa"]}</p>
+                            <p><strong>Título:</strong> ${data["titulo-problema"]}</p>
+                            <p><strong>Descrição:</strong> ${data["descricao-problema"]}</p>
                         `;
                         resultsContainer.appendChild(resultItem);
                     });
@@ -132,7 +132,7 @@
                     <div class="form-group col-md-6">
                         <label for="company-name">Nome da Empresa</label>
                         <select id="company-name" class="form-control">
-                            <option selected>Choose...</option>
+                            <option selected>Escolha a Empresa</option>
                         </select>
                     </div>
                 </div>
