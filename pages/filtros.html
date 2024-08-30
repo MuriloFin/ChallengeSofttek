@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,7 +11,93 @@
     <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore-compat.js"></script>
 </head>
+
 <body>
+    <script type="module">
+        const firebaseConfig = {
+            apiKey: "API_KEY",
+            authDomain: "helptek-37077.firebaseapp.com",
+            projectId: "helptek-37077",
+            storageBucket: "helptek-37077.appspot.com",
+            messagingSenderId: "325627176218",
+            appId: "1:325627176218:web:e9ed561fc26baddf85f8a3",
+            measurementId: "G-PDSZEYWYZ9"
+        };
+
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+
+        async function populateCompanyFilter() {
+            const companySelect = document.getElementById('company-name');
+            companySelect.innerHTML = '<option selected>Escolha a Empresa</option>';
+
+            try {
+                const querySnapshot = await db.collection("softtek-casos").get();
+                const companies = new Set();
+                querySnapshot.forEach(doc => {
+                    companies.add(doc.data()["nome-empresa"]);
+                });
+
+                companies.forEach(company => {
+                    const option = document.createElement('option');
+                    option.value = company;
+                    option.text = company;
+                    companySelect.appendChild(option);
+                });
+            } catch (error) {
+                console.error("Error fetching company names: ", error);
+            }
+        }
+
+        async function filterResults() {
+            const taskNumber = document.getElementById('task-number').value;
+            const companyName = document.getElementById('company-name').value;
+            const resultsContainer = document.getElementById('results-container');
+            resultsContainer.innerHTML = '';
+
+            let query = db.collection("softtek-casos");
+
+            if (taskNumber) {
+                query = query.where("numero-task", "==", taskNumber);
+            }
+
+            if (companyName && companyName !== "Choose...") {
+                query = query.where("nome-empresa", "==", companyName);
+            }
+
+            try {
+                const querySnapshot = await query.get();
+                if (querySnapshot.empty) {
+                    resultsContainer.innerHTML = '<p>No results found.</p>';
+                } else {
+                    querySnapshot.forEach(doc => {
+                        const data = doc.data();
+                        const resultItem = document.createElement('div');
+                        resultItem.className = 'result-item';
+                        resultItem.innerHTML = `
+                            <p><strong>Task Number:</strong> ${data["numero-task"]}</p>
+                            <p><strong>Company Name:</strong> ${data["nome-empresa"]}</p>
+                            <p><strong>Title:</strong> ${data["titulo-problema"]}</p>
+                            <p><strong>Description:</strong> ${data["descricao-problema"]}</p>
+                        `;
+                        resultsContainer.appendChild(resultItem);
+                    });
+                }
+            } catch (error) {
+                console.error("Error filtering results: ", error);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            populateCompanyFilter();
+
+            document.querySelector('.filter-form').addEventListener('submit', (e) => {
+                e.preventDefault();
+                filterResults();
+            });
+        });
+    </script>
+
     <div class="header">
         <div class="helptek-logo">
             <img src="../images/helptek-logo.png" height="80" alt="Helptek Logo">
@@ -30,79 +117,31 @@
             <img src="../images/logo1.jpeg" alt="Softtek Logo">
         </div>
         <div>
-            <h4>Filtre soluções utilizando o <strong>Número da Task</strong> para obter resultados mais específicos.</h4>
+            <h4>Filtre o Número da Task ou o Nome da Empresa para acompanhar o andamento da Task.</h4>
             <br><br>
         </div>
 
         <div class="history-container">
-      
-            <form class="filter-form" id="filter-form">
-                <div class="form-group">
-                 
-                    <input type="text" class="form-control" id="numeroTask" placeholder="Número da Task">
+            <h2>Filtros de Pesquisa</h2>
+            <form class="filter-form">
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="task-number">Número da Task</label>
+                        <input type="text" class="form-control" id="task-number" placeholder="Digite o Número da Task">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="company-name">Nome da Empresa</label>
+                        <select id="company-name" class="form-control">
+                            <option selected>Choose...</option>
+                        </select>
+                    </div>
                 </div>
                 <button type="submit" class="btn btn-primary">Filtrar</button>
             </form>
-
-            <div id="results-container"></div>
         </div>
+
+        <div id="results-container" class="mt-4"></div>
     </div>
-
-    <script type="module">
-        const firebaseConfig = {
-            apiKey: "API_KEY",
-            authDomain: "helptek-37077.firebaseapp.com",
-            projectId: "helptek-37077",
-            storageBucket: "helptek-37077.appspot.com",
-            messagingSenderId: "325627176218",
-            appId: "1:325627176218:web:e9ed561fc26baddf85f8a3",
-            measurementId: "G-PDSZEYWYZ9"
-        };
-
-        firebase.initializeApp(firebaseConfig);
-        const db = firebase.firestore();
-
-        document.getElementById('filter-form').addEventListener('submit', function(event) {
-            event.preventDefault();
-            const numeroTask = document.getElementById('numeroTask').value.trim();
-            const resultsContainer = document.getElementById('results-container');
-            resultsContainer.innerHTML = '';
-
-            if (numeroTask !== '') {
-                db.collection("softtek-casos")
-                    .where("numero-task", "==", numeroTask)
-                    .get()
-                    .then(querySnapshot => {
-                        if (querySnapshot.empty) {
-                            resultsContainer.innerHTML = '<p>Nenhum resultado encontrado.</p>';
-                        } else {
-                            querySnapshot.forEach(doc => {
-                                const data = doc.data();
-                                const resultDiv = document.createElement('div');
-                                resultDiv.className = 'result';
-
-                                resultDiv.innerHTML = `
-                                    <h5>Número da Task: ${data["numero-task"]}</h5>
-                                    <p>Título do Problema: ${data["titulo-problema"]}</p>
-                                    <p>Nome da Empresa: ${data["nome-empresa"]}</p>
-                                    <p>Descrição do Problema: ${data["descricao-problema"]}</p>
-                                    <p>Observações: ${data["observacoes"]}</p>
-                                    <p>Solução: ${data["solucao"]}</p>
-                                `;
-
-                                resultsContainer.appendChild(resultDiv);
-                            });
-                        }
-                    })
-                    .catch(error => {
-                        console.error("Erro ao recuperar documentos: ", error);
-                        resultsContainer.innerHTML = '<p>Erro ao recuperar resultados. Tente novamente mais tarde.</p>';
-                    });
-            } else {
-                resultsContainer.innerHTML = '<p>Por favor, insira um Número da Task válido.</p>';
-            }
-        });
-    </script>
 
     <style>
         body {
@@ -120,8 +159,8 @@
             justify-content: start;
             align-items: center;
             padding: 10px;
-            background-color: #323336; 
-            box-shadow: none; 
+            background-color: #323336;
+            box-shadow: none;
             position: fixed;
             width: 100%;
             top: 0;
@@ -144,15 +183,15 @@
             margin-bottom: 20px;
         }
 
-        .header .btn, .chat-input .btn {
-            background-color: rgba(0, 0, 0, 0.0);
-            border-color: rgba(0, 0, 0, 0.0);
+        .header .btn {
+            background-color: rgba(0, 0, 0, 0);
+            border-color: rgba(0, 0, 0, 0);
             color: #ffffff;
         }
 
-        .header .btn:hover, .chat-input .btn:hover {
-            background-color: rgba(0, 0, 0, 0.0);
-            border-color: rgba(0, 0, 0, 0.0);
+        .header .btn:hover {
+            background-color: rgba(0, 0, 0, 0);
+            border-color: rgba(0, 0, 0, 0);
             filter: brightness(110%);
             text-decoration: underline;
             color: #96ffb5;
@@ -162,26 +201,18 @@
             text-align: left;
         }
 
-        .form-group {
-            margin-bottom: 15px;
-        }
-
-        .result {
-            border: 1px solid #ccc;
+        .result-item {
+            margin: 15px 0;
             padding: 15px;
-            margin: 10px 0;
+            border: 1px solid #ddd;
             border-radius: 5px;
             background-color: #f9f9f9;
         }
-
-        .result h5 {
-            font-size: 18px;
-            font-weight: bold;
-        }
-
-        .result p {
-            font-size: 14px;
-        }
     </style>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
+
 </html>
