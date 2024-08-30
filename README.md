@@ -1,8 +1,14 @@
-# Helptek
 
-<img src="https://github.com/user-attachments/assets/c716b303-d3d4-43fc-8190-08230df0a7e0" alt="logo-helptek" height="150">
+<div align="center">
+   <h1>Helptek</h1>
+   
+  <img src="https://github.com/user-attachments/assets/c716b303-d3d4-43fc-8190-08230df0a7e0" alt="logo-helptek" height="150"><br>
 
-**Helptek – Levando soluções para todos!**
+  
+  **Helptek – Levando soluções para todos!**
+</div>
+
+
 
 ## Descrição
 
