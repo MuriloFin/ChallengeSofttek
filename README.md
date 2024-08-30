@@ -43,12 +43,12 @@ Antes de rodar o projeto, certifique-se de que o seu ambiente de desenvolvimento
 
 Siga os passos abaixo para rodar o projeto localmente:
 
-1. **Clone o repositório** para a sua máquina local, abra o Git Bash em algum lugar de sua máquina e digite:
+1. **Clone o repositório** para a sua máquina local, abra o Git Bash em uma pasta separada, clicando com botão direito e em "Open Git Bash Here" e digite:
    ```bash
    git clone https://github.com/MuriloFin/ChallengeSofttek.git
    ```
 
-2. **Abra o projeto em sua máquina em alguma IDE (Recomenda-se o Visual Studio Code)**
+2. **Após o projeto ter baixado em usa pasta, abra-o em alguma IDE (Recomenda-se o Visual Studio Code)**
 
 
 4. **Abra o terminal do VSCode com o atalho Ctrl+'**
