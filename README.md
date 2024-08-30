@@ -8,6 +8,11 @@
 
 Helptek é uma plataforma inovadora projetada para agilizar a solução de problemas de usuários finais. Focada em melhorar a eficiência no atendimento, especialmente para atendentes da Softtek, a Helptek combina um banco de dados de soluções anteriores, filtragem inteligente e um chatbot que aprende com os erros para fornecer respostas rápidas e precisas. Isso garante que o atendimento se torne uma engrenagem precisa, onde cada movimento agiliza o próximo, resultando em soluções rápidas e sem interrupções.
 
+## Video Pitch do Projeto
+
+[![Video Pitch](https://img.youtube.com/vi/u2cKK3KzYfg/0.jpg)](https://youtu.be/u2cKK3KzYfg)
+
+
 ## Funcionalidades
 
 - **Histórico de Soluções**: Armazena e gerencia soluções anteriores para facilitar a busca e o atendimento de novos problemas.
