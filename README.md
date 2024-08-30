@@ -48,7 +48,7 @@ Siga os passos abaixo para rodar o projeto localmente:
    git clone https://github.com/MuriloFin/ChallengeSofttek.git
    ```
 
-2. **Após o projeto ter baixado em usa pasta, abra-o em alguma IDE (Recomenda-se o Visual Studio Code)**
+2. **Após o projeto ter baixado em sua pasta, abra-o em alguma IDE (Recomenda-se o Visual Studio Code)**
 
 
 4. **Abra o terminal do VSCode com o atalho Ctrl+'**
