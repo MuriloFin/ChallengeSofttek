@@ -41,7 +41,7 @@
 
                 const cardText = document.createElement("p");
                 cardText.className = "card-text";
-                cardText.innerText = formatFieldName("Título do Problema") + ": " + data["titulo-problema"];
+                cardText.innerText = formatFieldName("") + "" + data["titulo-problema"];
 
                 card.appendChild(cardTitle);
                 card.appendChild(cardText);
@@ -72,16 +72,47 @@
                         fieldLabel.innerText = formatFieldName(labelText);
 
                         const fieldValue = document.createElement("span");
-                        fieldValue.innerText = valueText;
+                        fieldValue.innerHTML = valueText
+    .replaceAll('\\n', '<br>')  
+    .replaceAll(/\*\*([^\s]+)\*\*/g, '<b>$1</b>');
 
+
+                        
+                        if(fieldValue.innerHTML!=""){
                         fieldDiv.appendChild(fieldLabel);
                         fieldDiv.appendChild(fieldValue);
                         modalBody.appendChild(fieldDiv);
+                        }
                     }
+                    const modalBodyInline = document.createElement("div");
+modalBodyInline.className = "modal-body-inline";
 
-                    addFieldToModal("Número da Task", data["numero-task"]);
-                    addFieldToModal("Título do Problema", data["titulo-problema"]);
-                    addFieldToModal("Nome da Empresa", data["nome-empresa"]);
+function addFieldToModalInline(labelText, valueText, width) {
+    const fieldDiv = document.createElement("div");
+    fieldDiv.className = "modal-field-inline";
+    fieldDiv.style.width = width; 
+
+    const fieldLabel = document.createElement("label");
+    fieldLabel.innerText = formatFieldName(labelText);
+
+    const fieldValue = document.createElement("span");
+    fieldValue.innerHTML = valueText
+        .replaceAll('\n', '<br>');
+
+    if(fieldValue.innerHTML != "") {
+        fieldDiv.appendChild(fieldLabel);
+        fieldDiv.appendChild(fieldValue);
+        modalBodyInline.appendChild(fieldDiv);
+    }
+}
+
+addFieldToModalInline("Número da Task", data["numero-task"], "20%"); 
+addFieldToModalInline("Título do Problema", data["titulo-problema"], "50%");
+addFieldToModalInline("Nome da Empresa", data["nome-empresa"], "30%"); 
+
+modalBody.appendChild(modalBodyInline);
+
+                    addFieldToModal("Pré-requisitos", data["pre-requisitos"]);
                     addFieldToModal("Descrição do Problema", data["descricao-problema"]);
                     addFieldToModal("Observações", data["observacoes"]);
                     addFieldToModal("Solução", data["solucao"]);
@@ -90,6 +121,11 @@
                     modalContent.appendChild(modalBody);
                     modal.appendChild(modalContent);
 
+                    modal.onclick = function(event) {
+        if (event.target === modal) {
+            modal.style.display = "none"; 
+        }
+    };
                     document.body.appendChild(modal);
 
                     modal.style.display = "block";
@@ -266,6 +302,27 @@
         .modal-field span {
             display: block;
         }
+        .modal-field-inline {
+    display: inline-block;
+    width: 30%; 
+    vertical-align: top;
+    margin-right: 5px;
+}
+
+.modal-body-inline {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 10px;
+}
+.modal-field-inline label {
+    font-weight: bold;
+    display: block;
+}
+
+.modal-field-inline span {
+    display: block;
+}
+
     </style>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
