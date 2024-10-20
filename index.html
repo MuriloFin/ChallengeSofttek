@@ -4,59 +4,59 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Helptek</title>
-    <link rel="stylesheet" href="./css/styles.css">
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="shortcut icon" type="imagex/png" href="./images/logo-helptek.ico">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="./css/landing.css">
 </head>
 <body>
-    <div class="header">
-        <div class="helptek-logo">
-            <img src="./images/helptek-logo.png" height="80" alt="Helptek Logo">
-        </div>
-        <div class="botoes">
-        <button type="button" class="btn btn-primary">Chatbot</button>
-        <button type="button" class="btn btn-primary" onclick="location.href='./pages/historico.html'">Histórico de Soluções</button>
-        <button type="button" class="btn btn-primary" onclick="location.href='./pages/filtros.html'">Filtros</button>
-        <button type="button" class="btn btn-primary" onclick="location.href='./pages/sobre.html'">Sobre nós</button>
-        <button type="button" class="btn btn-primary" onclick="location.href='./pages/equipe.html'">Equipe Helptek</button>
-        <a href="https://youtu.be/u2cKK3KzYfg" target="_blank" class="btn btn-primary">Video Pitch</a>
-
+    <header>
+        <div class="header-content">
+            <div class="header-image">
+                <img src="./images/logo-helptek.png" alt="" />
             </div>
-    </div>
-    <div class="container">
-        <div class="logo">
-            <img src="./images/logo1.jpeg" alt="Softtek Logo">
+        </div>
         
+    </header>
+    
+    <section class="about">
+        <div class="about-content">
+            <div class="about-text">
+                <h2>Olá, nós somos a Helptek!</h2>
+                <p><strong>Plataforma de suporte ao Service Desk Softtek</strong></p>
+                <br><br>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/u2cKK3KzYfg?si=oSXNL4fFv0V8FMb8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <br><br>
+                <div class="resumo">
+                    <img src="./images/robo02-removebg-preview.png" alt="">
+                    <p>Esta aplicação foi criada para auxiliar no atendimento Service Desk (nível 1) e AMS (nível 2).</p><br>
+                    <p>Criado e alimentado utilizando Inteligência Artificial, o nosso <strong>Chatbot</strong> está pronto para
+                        fornecer insights e soluções facilitadas para os atendentes, melhorando resultados e trazendo
+                        mais agilidade.</p>
+                </div>
+                <a href="./pages/chatbot.html">
+                    <button><strong>Converse Com Nosso Chatbot</strong></button>
+                </a>
+            </div>
         </div>
-        <div> 
-            <h5>Confira nosso vídeo Pitch para mais informações sobre o projeto:</h5>
-            <a href="https://youtu.be/u2cKK3KzYfg" target="_blank" class="btn btn-success">Video Pitch</a>
+    </section>
+    
+    
 
-        </div>
-        <br>
-        <div>
-            
-            
-            <p style="font-size: 20px;">Converse com nosso Chatbot para uma resolução funcional do atual problema sendo enfrentado.</p>
-        </div>
-        <div class="chat-container">
-            <div class="chat-header">
-                <h1>Helptek - Chatbot</h1>
+    <section class="learn">
+        <h2>Conheça Nossos Serviços</h2>
+        <div class="learn-items">
+            <div class="learn-item">
+                <h3>01</h3>
+                <p>Converse com nosso Chatbot, e busque uma solução para o problema designado.</p>
             </div>
-            <div id="chat-window" class="chat-window"></div>
-            <div id="loading-indicator" class="loading-indicator" style="display: none;">
-                <div class="spinner"></div> Digitando...
+            <div class="learn-item">
+                <h3>02</h3>
+                <p>Consulte o Histórico de Tasks em nosso Banco de Dados.</p>
             </div>
-            <div class="input-container">
-                <input type="text" id="chat-input" class="chat-input" placeholder="Escreva sua mensagem...">
-                <button id="send-button" class="send-button"><i class="fas fa-paper-plane"></i></button>
+            <div class="learn-item">
+                <h3>03</h3>
+                <p>Utilize nossos Filtros para buscar soluções semelhantes.</p>
             </div>
         </div>
-    </div>
-
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script src="./scripts/script.js"></script>
-    <script src="./scripts/user.js"></script>
+        
+    </section>
 </body>
 </html>

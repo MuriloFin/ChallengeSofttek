@@ -47,8 +47,7 @@ justify-content: space-around;
     flex-direction: column; 
     align-items: center; 
     justify-content: center; 
-    gap: 20px; 
-     
+    gap: 20px;
 }
 
 .logo img {
@@ -169,6 +168,9 @@ justify-content: space-around;
     padding: 15px;
     text-align: center;
 }
+.chat-header h1 {
+    color: white;
+}
 
 .chat-window {
     flex-grow: 1;
@@ -251,4 +253,30 @@ justify-content: space-around;
 @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
+}
+
+.container h2 {
+    font-family: "IBM Plex Sans", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color: #005bb5;
+    font-size: 55px;
+    margin-top: -2%;
+  }
+
+.container h3 {
+    font-family: "IBM Plex Sans", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color: #005bb5;
+    font-size: 36px;
+    margin-top: -1%;
+}
+
+h1{
+    color: #005bb5;
+}
+
+.future-features h4{
+    color: #005bb5;
 }

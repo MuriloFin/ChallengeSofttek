@@ -10,6 +10,8 @@
     <link rel="shortcut icon" type="image/x-icon" href="../images/logo-helptek.ico">
     <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore-compat.js"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -70,10 +72,21 @@
                 if (querySnapshot.empty) {
                     resultsContainer.innerHTML = '<p>Nenhum resultado encontrado.</p>';
                 } else {
+                    let index = 0; // Adicionado para controlar a cor do card
                     querySnapshot.forEach(doc => {
                         const data = doc.data();
                         const resultItem = document.createElement('div');
                         resultItem.className = 'result-item';
+                        
+                        // Alternando cores com base no índice
+                        if (index % 2 === 0) {
+                            resultItem.style.backgroundColor = '#006D77';
+                            resultItem.style.color = 'white';
+                        } else {
+                            resultItem.style.backgroundColor = '#83C5BE';
+                            resultItem.style.color = 'black';
+                        }
+
                         resultItem.innerHTML = `
                             <p><strong>Número da Task:</strong> ${data["numero-task"]}</p>
                             <p><strong>Nome da Empresa:</strong> ${data["nome-empresa"]}</p>
@@ -84,6 +97,7 @@
                             showModal(doc.id, data);
                         };
                         resultsContainer.appendChild(resultItem);
+                        index++; // Incrementar o índice após adicionar o card
                     });
                 }
             } catch (error) {
@@ -106,41 +120,41 @@
 
                 const fieldValue = document.createElement("span");
                 fieldValue.innerHTML = valueText
-    .replaceAll('\\n', '<br>')  
-    .replaceAll(/\*\*([^\s]+)\*\*/g, '<b>$1</b>');
-
+                    .replaceAll('\\n', '<br>')  
+                    .replaceAll(/\*\*([^\s]+)\*\*/g, '<b>$1</b>');
 
                 fieldDiv.appendChild(fieldLabel);
                 fieldDiv.appendChild(fieldValue);
                 modalBody.appendChild(fieldDiv);
             }
+
             const modalBodyInline = document.createElement("div");
-modalBodyInline.className = "modal-body-inline";
+            modalBodyInline.className = "modal-body-inline";
 
-function addFieldToModalInline(labelText, valueText, width) {
-    const fieldDiv = document.createElement("div");
-    fieldDiv.className = "modal-field-inline";
-    fieldDiv.style.width = width; 
+            function addFieldToModalInline(labelText, valueText, width) {
+                const fieldDiv = document.createElement("div");
+                fieldDiv.className = "modal-field-inline";
+                fieldDiv.style.width = width; 
 
-    const fieldLabel = document.createElement("label");
-    fieldLabel.innerText = formatFieldName(labelText);
+                const fieldLabel = document.createElement("label");
+                fieldLabel.innerText = formatFieldName(labelText);
 
-    const fieldValue = document.createElement("span");
-    fieldValue.innerHTML = valueText
-        .replaceAll('\n', '<br>');
+                const fieldValue = document.createElement("span");
+                fieldValue.innerHTML = valueText
+                    .replaceAll('\n', '<br>');
 
-    if(fieldValue.innerHTML != "") {
-        fieldDiv.appendChild(fieldLabel);
-        fieldDiv.appendChild(fieldValue);
-        modalBodyInline.appendChild(fieldDiv);
-    }
-}
+                if(fieldValue.innerHTML != "") {
+                    fieldDiv.appendChild(fieldLabel);
+                    fieldDiv.appendChild(fieldValue);
+                    modalBodyInline.appendChild(fieldDiv);
+                }
+            }
 
-addFieldToModalInline("Número da Task", data["numero-task"], "20%"); 
-addFieldToModalInline("Título do Problema", data["titulo-problema"], "50%");
-addFieldToModalInline("Nome da Empresa", data["nome-empresa"], "30%"); 
+            addFieldToModalInline("Número da Task", data["numero-task"], "20%"); 
+            addFieldToModalInline("Título do Problema", data["titulo-problema"], "50%");
+            addFieldToModalInline("Nome da Empresa", data["nome-empresa"], "30%"); 
 
-modalBody.appendChild(modalBodyInline);
+            modalBody.appendChild(modalBodyInline);
             addFieldToModal("Descrição do Problema", data["descricao-problema"]);
             addFieldToModal("Observações", data["observacoes"]);
             addFieldToModal("Solução", data["solucao"]);
@@ -167,80 +181,71 @@ modalBody.appendChild(modalBodyInline);
                 }
             };
         });
+
         function formatFieldName(fieldName) {
             return fieldName.replace(/-/g, " ");
         }
     </script>
 
-    <div class="header">
-        <div class="helptek-logo">
+<div class="header">
+    <div class="helptek-logo">
+        <a href="../index.html">
             <img src="../images/helptek-logo.png" height="80" alt="Helptek Logo">
-        </div>
-        <div class="botoes">
-            <button type="button" class="btn btn-primary" onclick="location.href='../index.html'">Chatbot</button>
-            <button type="button" class="btn btn-primary" onclick="location.href='./historico.html'">Histórico de Soluções</button>
-            <button type="button" class="btn btn-primary">Filtros</button>
-            <button type="button" class="btn btn-primary" onclick="location.href='./sobre.html'">Sobre nós</button>
-            <button type="button" class="btn btn-primary" onclick="location.href='./equipe.html'">Equipe Helptek</button>
-            <a href="https://youtu.be/u2cKK3KzYfg" target="_blank" class="btn btn-primary">Video Pitch</a>
-        </div>
+        </a>
     </div>
+    <div class="botoes">
+        <button type="button" class="btn btn-primary" onclick="location.href='./chatbot.html'">Chatbot</button>
+        <button type="button" class="btn btn-primary" onclick="location.href='./historico.html'">Histórico de Soluções</button>
+        <button type="button" class="btn btn-primary" onclick="location.href='./filtros.html'">Filtros</button>
+        <button type="button" class="btn btn-primary" onclick="location.href='./sobre.html'">Sobre nós</button>
+        <button type="button" class="btn btn-primary" onclick="location.href='./equipe.html'">Equipe Helptek</button>
+        <a href="https://youtu.be/u2cKK3KzYfg" target="_blank" class="btn btn-primary">Video Pitch</a>
+    </div>
+</div>
 
     <div class="container">
         <div class="logo">
             <img src="../images/logo1.jpeg" alt="Softtek Logo">
         </div>
-        <div>
-            <h4>Filtre o Número da Task ou o Nome da Empresa para acompanhar o andamento da Task.</h4>
-            <h5>Clique em uma task para mais detalhes.</h5>
+            <h4>Filtre o Número da Task ou o Nome da Empresa para acompanhar o andamento do pedido.</h4>
             <br><br>
-        </div>
 
         <div class="history-container">
-            <h2>Filtros de Pesquisa</h2>
             <form class="filter-form">
                 <div class="form-row">
                     <div class="form-group col-md-6">
-                        <label for="task-number">Número da Task</label>
                         <input type="text" class="form-control" id="task-number" placeholder="Digite o Número da Task">
                     </div>
                     <div class="form-group col-md-6">
-                        <label for="company-name">Nome da Empresa</label>
                         <select id="company-name" class="form-control">
                             <option selected>Escolha a Empresa</option>
                         </select>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-primary">Filtrar</button>
+                <button type="submit" class="btn btn-primary">Buscar</button>
             </form>
+            <div id="results-container"></div>
         </div>
-
-        <div id="results-container" class="mt-4"></div>
     </div>
+
     <div id="modal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
             <div class="modal-body"></div>
         </div>
     </div>
+
     <style>
         body {
             font-family: Arial, sans-serif;
+            background-color: #F2F2F2;
             margin: 0;
             padding: 0;
-            background-image: url('../images/background.jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
         }
-        
 
         .header {
-            display: flex;
-            justify-content: start;
-            align-items: center;
-            padding: 10px;
             background-color: #323336;
+            padding: 10px;
             box-shadow: none;
             position: fixed;
             width: 100%;
@@ -251,7 +256,8 @@ modalBody.appendChild(modalBodyInline);
 
         .container {
             max-width: 800px;
-            margin: 100px auto;
+            margin: 0 auto;
+            margin-top: 120px;
             padding: 20px;
             background-color: #ffffff;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -287,9 +293,16 @@ modalBody.appendChild(modalBodyInline);
             padding: 15px;
             border: 1px solid #ddd;
             border-radius: 5px;
-            background-color: #f9f9f9;
             cursor: pointer;
+            transition: all 0.3s ease; /* Adicionando transição suave */
         }
+
+        /* Efeito de destaque ao passar o mouse */
+        .result-item:hover {
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Sombra ao hover */
+            transform: scale(1.02); /* Aumenta ligeiramente o tamanho */
+        }
+
         .modal {
             display: none;
             position: fixed;
@@ -337,27 +350,28 @@ modalBody.appendChild(modalBodyInline);
         .modal-field span {
             display: block;
         }
+
         .modal-field-inline {
-    display: inline-block;
-    width: 30%; 
-    vertical-align: top;
-    margin-right: 5px;
-}
+            display: inline-block;
+            width: 30%;
+            vertical-align: top;
+            margin-right: 5px;
+        }
 
-.modal-body-inline {
-    display: flex;
-    justify-content: space-between;
-    padding-bottom: 10px;
-}
-.modal-field-inline label {
-    font-weight: bold;
-    display: block;
-}
+        .modal-body-inline {
+            display: flex;
+            justify-content: space-between;
+            padding-bottom: 10px;
+        }
 
-.modal-field-inline span {
-    display: block;
-}
+        .modal-field-inline label {
+            font-weight: bold;
+            display: block;
+        }
 
+        .modal-field-inline span {
+            display: block;
+        }
     </style>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
