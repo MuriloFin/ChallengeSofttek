@@ -2,7 +2,7 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-image: url('../images/background.jpg');
+    background-image: url('../images/bg.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -163,7 +163,7 @@ justify-content: space-around;
 }
 
 .chat-header {
-    background-color: #0078D7;
+    background-color: #8a2be2;
     color: #ffffff;
     padding: 15px;
     text-align: center;
@@ -200,7 +200,7 @@ justify-content: space-around;
 .send-button {
     margin-left: 10px;
     padding: 10px;
-    background-color: #0078D7;
+    background-color: #8a2be2;
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -220,7 +220,7 @@ justify-content: space-around;
 }
 
 .user-message {
-    background-color: #0078D7;
+    background-color: #8a2be2;
     color: #fff;
     align-self: flex-end;
 }
@@ -259,8 +259,8 @@ justify-content: space-around;
     font-family: "IBM Plex Sans", sans-serif;
     font-weight: 400;
     font-style: normal;
-    color: #005bb5;
-    font-size: 55px;
+    color: #8a2be2;
+    font-size: 45px;
     margin-top: -2%;
   }
 
@@ -268,15 +268,19 @@ justify-content: space-around;
     font-family: "IBM Plex Sans", sans-serif;
     font-weight: 400;
     font-style: normal;
-    color: #005bb5;
+    color: #8a2be2;
     font-size: 36px;
     margin-top: -1%;
 }
 
 h1{
-    color: #005bb5;
+    color: #8a2be2;
 }
 
 .future-features h4{
-    color: #005bb5;
+    color: #8a2be2;
+}
+
+h4{
+    color: #8a2be2;
 }

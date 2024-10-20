@@ -72,18 +72,18 @@
                 if (querySnapshot.empty) {
                     resultsContainer.innerHTML = '<p>Nenhum resultado encontrado.</p>';
                 } else {
-                    let index = 0; // Adicionado para controlar a cor do card
+                    let index = 0; 
                     querySnapshot.forEach(doc => {
                         const data = doc.data();
                         const resultItem = document.createElement('div');
                         resultItem.className = 'result-item';
                         
-                        // Alternando cores com base no índice
+                        
                         if (index % 2 === 0) {
-                            resultItem.style.backgroundColor = '#006D77';
-                            resultItem.style.color = 'white';
+                            resultItem.style.backgroundColor = '#F9F9F9 ';
+                            resultItem.style.color = 'black';
                         } else {
-                            resultItem.style.backgroundColor = '#83C5BE';
+                            resultItem.style.backgroundColor = '#C1C1C3';
                             resultItem.style.color = 'black';
                         }
 
@@ -97,7 +97,7 @@
                             showModal(doc.id, data);
                         };
                         resultsContainer.appendChild(resultItem);
-                        index++; // Incrementar o índice após adicionar o card
+                        index++; 
                     });
                 }
             } catch (error) {
@@ -199,7 +199,7 @@
         <button type="button" class="btn btn-primary" onclick="location.href='./filtros.html'">Filtros</button>
         <button type="button" class="btn btn-primary" onclick="location.href='./sobre.html'">Sobre nós</button>
         <button type="button" class="btn btn-primary" onclick="location.href='./equipe.html'">Equipe Helptek</button>
-        <a href="https://youtu.be/u2cKK3KzYfg" target="_blank" class="btn btn-primary">Video Pitch</a>
+        <!-- <a href="https://youtu.be/u2cKK3KzYfg" target="_blank" class="btn btn-primary">Video Pitch</a> -->
     </div>
 </div>
 
@@ -294,13 +294,13 @@
             border: 1px solid #ddd;
             border-radius: 5px;
             cursor: pointer;
-            transition: all 0.3s ease; /* Adicionando transição suave */
+            transition: all 0.3s ease; 
         }
 
-        /* Efeito de destaque ao passar o mouse */
+        
         .result-item:hover {
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Sombra ao hover */
-            transform: scale(1.02); /* Aumenta ligeiramente o tamanho */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); 
+            transform: scale(1.02); 
         }
 
         .modal {

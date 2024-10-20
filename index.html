@@ -1,62 +1,59 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Helptek</title>
     <link rel="stylesheet" href="./css/landing.css">
 </head>
+
+<div class="header">
+    <div class="helptek-logo">
+        <a href="./index.html">
+            <img src="./images/helptek-logo.png" height="80" alt="Helptek Logo">
+        </a>
+    </div>
+    <div class="botoes">
+        <button type="button" class="btn btn-primary">Chatbot</button>
+        <button type="button" class="btn btn-primary" onclick="location.href='./pages/historico.html'">Histórico de Soluções</button>
+        <button type="button" class="btn btn-primary" onclick="location.href='./pages/filtros.html'">Filtros</button>
+        <button type="button" class="btn btn-primary" onclick="location.href='./pages/sobre.html'">Sobre nós</button>
+        <button type="button" class="btn btn-primary" onclick="location.href='./pages/equipe.html'">Equipe Helptek</button>
+        <!-- <a href="https://youtu.be/u2cKK3KzYfg" target="_blank" class="btn btn-primary">Video Pitch</a> -->
+    </div>
+</div>
 <body>
-    <header>
-        <div class="header-content">
-            <div class="header-image">
-                <img src="./images/logo-helptek.png" alt="" />
-            </div>
-        </div>
-        
-    </header>
-    
-    <section class="about">
-        <div class="about-content">
-            <div class="about-text">
-                <h2>Olá, nós somos a Helptek!</h2>
-                <p><strong>Plataforma de suporte ao Service Desk Softtek</strong></p>
-                <br><br>
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/u2cKK3KzYfg?si=oSXNL4fFv0V8FMb8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                <br><br>
-                <div class="resumo">
-                    <img src="./images/robo02-removebg-preview.png" alt="">
-                    <p>Esta aplicação foi criada para auxiliar no atendimento Service Desk (nível 1) e AMS (nível 2).</p><br>
-                    <p>Criado e alimentado utilizando Inteligência Artificial, o nosso <strong>Chatbot</strong> está pronto para
-                        fornecer insights e soluções facilitadas para os atendentes, melhorando resultados e trazendo
-                        mais agilidade.</p>
-                </div>
+    <div class="container">
+        <div class="card">
+            <h1>Olá, nós somos a Helptek!</h1>
+            <h2>Plataforma de Suporte ao Service Desk Softtek</h2>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/u2cKK3KzYfg?si=oSXNL4fFv0V8FMb8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <p>Esta aplicação foi criada para auxiliar no atendimento Service Desk (nível 1) e AMS (nível 2) da empresa Softtek. </p>
+            <br><br>
+                <p>Criado e alimentado utilizando Inteligência Artificial, o nosso 
+                <strong>Chatbot</strong> está pronto para fornecer insights e soluções facilitadas.
+            </p>
+            <div class="botaochat">
                 <a href="./pages/chatbot.html">
                     <button><strong>Converse Com Nosso Chatbot</strong></button>
                 </a>
             </div>
-        </div>
-    </section>
-    
-    
 
-    <section class="learn">
-        <h2>Conheça Nossos Serviços</h2>
-        <div class="learn-items">
-            <div class="learn-item">
-                <h3>01</h3>
-                <p>Converse com nosso Chatbot, e busque uma solução para o problema designado.</p>
-            </div>
-            <div class="learn-item">
-                <h3>02</h3>
-                <p>Consulte o Histórico de Tasks em nosso Banco de Dados.</p>
-            </div>
-            <div class="learn-item">
-                <h3>03</h3>
-                <p>Utilize nossos Filtros para buscar soluções semelhantes.</p>
+            <div class="services">
+                <div class="service">
+                    <h3>01</h3>
+                    <p>Converse com nosso Chatbot para solucionar dúvidas e eventuais dificuldades.</p>
+                </div>
+                <div class="service">
+                    <h3>02</h3>
+                    <p>Consulte o Histórico de Tasks solucionadas, para análise de quais problemas são mais recorrentes.</p>
+                </div>
+                <div class="service">
+                    <h3>03</h3>
+                    <p>Utilize filtros para uma busca mais efetiva do tipo de problema e Tasks específicas.</p>
+                </div>
             </div>
         </div>
-        
-    </section>
+    </div>
 </body>
 </html>
