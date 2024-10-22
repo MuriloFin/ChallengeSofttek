@@ -14,7 +14,7 @@
         </a>
     </div>
     <div class="botoes">
-        <button type="button" class="btn btn-primary">Chatbot</button>
+        <button type="button" class="btn btn-primary" onclick="location.href='./pages/chatbot.html'">Chatbot</button>
         <button type="button" class="btn btn-primary" onclick="location.href='./pages/historico.html'">Histórico de Soluções</button>
         <button type="button" class="btn btn-primary" onclick="location.href='./pages/filtros.html'">Filtros</button>
         <button type="button" class="btn btn-primary" onclick="location.href='./pages/sobre.html'">Sobre nós</button>
@@ -23,6 +23,17 @@
     </div>
 </div>
 <body>
+    <script>
+           window.addEventListener('scroll', function() {
+    const header = document.querySelector('.header'); // Corrigido o seletor
+    
+    if (window.scrollY > 0) {
+        header.classList.add('scrolled'); // Adiciona a classe quando rola a página
+    } else {
+        header.classList.remove('scrolled'); // Remove a classe quando está no topo
+    }
+});
+    </script>
     <div class="container">
         <div class="card">
             <h1>Olá, nós somos a Helptek!</h1>
@@ -38,21 +49,61 @@
                     <button><strong>Converse Com Nosso Chatbot</strong></button>
                 </a>
             </div>
-
+            <h2>Confira os benefícios apresentados pelos serviços Helptek</h2>
             <div class="services">
+   
                 <div class="service">
-                    <h3>01</h3>
+                    <h3>Chatbot</h3>
                     <p>Converse com nosso Chatbot para solucionar dúvidas e eventuais dificuldades.</p>
                 </div>
                 <div class="service">
-                    <h3>02</h3>
+                    <h3>Histórico</h3>
                     <p>Consulte o Histórico de Tasks solucionadas, para análise de quais problemas são mais recorrentes.</p>
                 </div>
                 <div class="service">
-                    <h3>03</h3>
+                    <h3>Filtragem</h3>
                     <p>Utilize filtros para uma busca mais efetiva do tipo de problema e Tasks específicas.</p>
                 </div>
             </div>
+            <br><br>
+           
+         
+            <div style="display: flex;">
+                <img src="images/robo01-removebg-preview.png" alt="">
+                <div style="display: flex; flex-direction: column;">
+                    <h2>Sobre o Projeto Helptek</h2>
+                    <br>
+            <p>
+                A <strong>Helptek</strong> é uma plataforma inovadora desenvolvida para otimizar o atendimento ao cliente, focada em acelerar a resolução de problemas de usuários finais. <br>
+                <br>
+                Projetada para os atendentes da <strong>Softtek</strong>, a plataforma integra um sistema de <strong>Histórico de Soluções</strong>, <strong>Filtros Inteligentes</strong>, 
+                e um <strong>Chatbot Aprendiz</strong> que aprende continuamente, sugerindo respostas precisas com base em soluções anteriores. 
+                <br><br>Nosso objetivo é melhorar a eficiência, produtividade e satisfação dos clientes, fornecendo suporte técnico de maneira rápida e assertiva.
+            </p>
+        </div>
+        </div>
+        <br><br>
+        <div style="display: flex; justify-content: space-between; padding-bottom: 50px;">
+            <div>
+            <h2>Como a Helptek Transforma o Atendimento</h2>
+            <br><br>
+            <p>
+                A <strong>Helptek</strong> não apenas acelera o tempo de resposta, mas também oferece uma abordagem inteligente e personalizada para o atendimento ao cliente. 
+               <br><br>Com o <strong>Histórico de Soluções</strong>, os atendentes têm acesso rápido a problemas similares já resolvidos, o que garante maior assertividade nas respostas. 
+               <br> <br>O sistema de <strong>Filtragem Inteligente</strong> permite encontrar rapidamente as soluções mais relevantes, economizando tempo e aumentando a produtividade no atendimento.
+            </p>
+            <img src="images/robo02-removebg-preview.png" alt="" style="width: 100%;height: auto;">
+        </div>
+        <div style="display: flex; flex-direction: column;">
+            <img src="images/robo03-removebg-preview.png" alt="" style="width: 100%;height: auto;" >
+       
+        <p>
+            <br><br>  Além disso, o <strong>Chatbot Aprendiz</strong> utiliza técnicas avançadas de Inteligência Artificial para aprender com cada interação, sugerindo soluções cada vez mais precisas. 
+              <br><br>Ao permitir que novos problemas sejam rapidamente cadastrados e validados no banco de dados, a Helptek garante uma melhoria contínua no desempenho dos atendentes, fortalecendo a capacidade de atendimento da <strong>Softtek</strong>.
+          </p>
+
+    </div>
+    </div>
         </div>
     </div>
 </body>

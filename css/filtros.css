@@ -3,9 +3,11 @@ body {
     margin: 0;
     padding: 0;
     background-image: url('../images/bg.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    background-size:auto;
+    background-repeat: repeat;
+    background-attachment: fixed;
+
+    
 }
 
 .header {
@@ -13,7 +15,8 @@ body {
     justify-content: start;
     align-items: center;
     padding: 10px;
-    background-color: #323336; 
+    background-color: transparent;
+    transition: background-color 0.3s ease;
     box-shadow: none; 
     position: fixed;
     width: 100%;
@@ -21,13 +24,17 @@ body {
     z-index: 1000;
     opacity: 95%;
 }
+.header.scrolled {
+    background-color: #001F3F;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+}
 
 .container {
     max-width: 800px;
     margin: 130px auto; 
     padding: 20px;
     background-color: #ffffff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
     text-align: center;
 }
 
@@ -35,20 +42,27 @@ body {
     max-width: 100%;
     height: auto;
     margin-bottom: 20px;
+    width: 40%;
 }
 
 .header .btn, .chat-input .btn {
     background-color: rgba(0, 0, 0, 0.0);
     border-color: rgba(0, 0, 0, 0.0);
+    transition: background-color 0.6s ease, padding 0.6s ease, filter 0.6s ease;
     color: #ffffff;
+    cursor: pointer;
+    font-size: 16px;
 }
 
 .header .btn:hover, .chat-input .btn:hover {
-    background-color: rgba(0, 0, 0, 0.0);
+    background-color: #00C4FF;
+    padding: 10px 30px;
+    transition: background-color 0.4s ease, padding 0.4s ease, filter 0.4s ease;
     border-color: rgba(0, 0, 0, 0.0);
+    border-radius: 10px;
     filter: brightness(110%);
-    text-decoration: underline;
-    color: #96ffb5;
+
+    color: #fff;
 }
 
 .helptek-logo{
@@ -137,7 +151,7 @@ justify-content: space-around;
 }
 
 .filter-form button.btn.btn-primary {
-    background-color: #00cebe;
+    background-color: #1589fd;
     border: 0px;
 }
 
@@ -149,7 +163,7 @@ justify-content: space-around;
     font-family: "IBM Plex Sans", sans-serif;
     font-weight: 400;
     font-style: normal;
-    color: #8a2be2;
+    color: #fff;
     font-size: 32px;
 }
 

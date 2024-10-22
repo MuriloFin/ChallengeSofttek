@@ -140,6 +140,17 @@ modalBody.appendChild(modalBodyInline);
         function formatFieldName(fieldName) {
             return fieldName.replace(/-/g, " ");
         }
+
+
+        window.addEventListener('scroll', function() {
+    const header = document.querySelector('.header'); // Corrigido o seletor
+    
+    if (window.scrollY > 0) {
+        header.classList.add('scrolled'); // Adiciona a classe quando rola a página
+    } else {
+        header.classList.remove('scrolled'); // Remove a classe quando está no topo
+    }
+});
     </script>
 
     
@@ -161,7 +172,7 @@ modalBody.appendChild(modalBodyInline);
     <br>
     <div class="container">
         <div class="logo">
-            <img src="../images/logo1.jpeg" alt="Softtek Logo">
+            <img src="../images/logo1.png" alt="Softtek Logo" >
         </div>
         <h4>Busque uma Task já solucionada anteriormente e clique para obter mais detalhes.</h4>
         <br>
@@ -184,7 +195,8 @@ modalBody.appendChild(modalBodyInline);
     justify-content: start;
     align-items: center;
     padding: 10px;
-    background-color: #323336; 
+    background-color: transparent;
+    transition: background-color 0.3s ease;
     box-shadow: none; 
     position: fixed;
     width: 100%;
@@ -192,13 +204,18 @@ modalBody.appendChild(modalBodyInline);
     z-index: 1000;
     opacity: 95%;
 }
+.header.scrolled {
+    background-color: #001F3F;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+}
+
 
         .container {
             max-width: 800px;
             margin: 100px auto;
             padding: 20px;
-            background-color: #ffffff;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: #001F3F ;
+            box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
             text-align: center;
         }
 
@@ -211,34 +228,41 @@ modalBody.appendChild(modalBodyInline);
         .header .btn, .chat-input .btn {
     background-color: rgba(0, 0, 0, 0.0);
     border-color: rgba(0, 0, 0, 0.0);
+    transition: background-color 0.6s ease, padding 0.6s ease, filter 0.6s ease;
     color: #ffffff;
+    cursor: pointer;
+    font-size: 16px;
 }
 
 .header .btn:hover, .chat-input .btn:hover {
-    background-color: rgba(0, 0, 0, 0.0);
+    background-color: #00C4FF;
+    padding: 10px 30px;
+    transition: background-color 0.4s ease, padding 0.4s ease, filter 0.4s ease;
     border-color: rgba(0, 0, 0, 0.0);
+    border-radius: 10px;
     filter: brightness(110%);
-    text-decoration: underline;
-    color: #96ffb5;
+
+    color: #fff;
 }
 
         
         .card {
-            border: 1px solid #ccc;
+            border: 1px solid #0088CC ;
             padding: 15px;
             margin: 10px 0;
             cursor: pointer;
             border-radius: 5px;
             transition: transform 0.2s;
+            color: #fff;
         }
 
         .card-odd {
-            background-color: #F9F9F9; 
+            background-color: #003366 ; 
         }
 
         .card-even {
-            background-color: #C1C1C3; 
-            color: black; 
+            background-color: #247dd6; 
+            color: #fff;
         }
 
         .card:hover {
@@ -249,6 +273,7 @@ modalBody.appendChild(modalBodyInline);
         .card-title {
             font-size: 18px;
             font-weight: bold;
+            color: #FFFFFF ;
         }
 
         .modal {

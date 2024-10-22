@@ -6,6 +6,7 @@ body {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    color: #fff;
 }
 
 .header {
@@ -13,7 +14,8 @@ body {
     justify-content: start;
     align-items: center;
     padding: 10px;
-    background-color: #323336; 
+    background-color: transparent;
+    transition: background-color 0.3s ease;
     box-shadow: none; 
     position: fixed;
     width: 100%;
@@ -21,7 +23,10 @@ body {
     z-index: 1000;
     opacity: 95%;
 }
-
+.header.scrolled {
+    background-color: #001F3F;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+}
 .helptek-logo{
     width: 30%;
     display: flex;
@@ -41,7 +46,9 @@ justify-content: space-around;
     max-width: 800px;
     margin: 130px auto; 
     padding: 20px;
-    background-color: #ffffff;
+    background-color: #001F3F;
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+    color: #fff;
     text-align: center; 
     display: flex;
     flex-direction: column; 
@@ -54,22 +61,28 @@ justify-content: space-around;
     max-width: 100%;
     height: auto;
     margin-bottom: 0px;
+    width: 40%;
 }
 
 .header .btn, .chat-input .btn {
     background-color: rgba(0, 0, 0, 0.0);
     border-color: rgba(0, 0, 0, 0.0);
+    transition: background-color 0.6s ease, padding 0.6s ease, filter 0.6s ease;
     color: #ffffff;
+    cursor: pointer;
+    font-size: 16px;
 }
 
 .header .btn:hover, .chat-input .btn:hover {
-    background-color: rgba(0, 0, 0, 0.0);
+    background-color: #00C4FF;
+    padding: 10px 30px;
+    transition: background-color 0.4s ease, padding 0.4s ease, filter 0.4s ease;
     border-color: rgba(0, 0, 0, 0.0);
+    border-radius: 10px;
     filter: brightness(110%);
-    text-decoration: underline;
-    color: #96ffb5;
-}
 
+    color: #fff;
+}
 .chat-container {
     display: flex;
     flex-direction: column;
@@ -152,7 +165,7 @@ justify-content: space-around;
 
 
 .chat-container {
-    width: 500px;
+    width: 700px;
     height: 700px;
     background-color: #ffffff;
     border-radius: 10px;
@@ -163,7 +176,7 @@ justify-content: space-around;
 }
 
 .chat-header {
-    background-color: #8a2be2;
+    background-color: #00C4FF;
     color: #ffffff;
     padding: 15px;
     text-align: center;
@@ -200,7 +213,7 @@ justify-content: space-around;
 .send-button {
     margin-left: 10px;
     padding: 10px;
-    background-color: #8a2be2;
+    background-color: #00C4FF;
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -208,7 +221,7 @@ justify-content: space-around;
 }
 
 .send-button:hover {
-    background-color: #005bb5;
+    background-color: #001F3F;
 }
 
 .message {
@@ -220,7 +233,7 @@ justify-content: space-around;
 }
 
 .user-message {
-    background-color: #8a2be2;
+    background-color: #00C4FF;
     color: #fff;
     align-self: flex-end;
 }
@@ -259,8 +272,9 @@ justify-content: space-around;
     font-family: "IBM Plex Sans", sans-serif;
     font-weight: 400;
     font-style: normal;
-    color: #8a2be2;
-    font-size: 45px;
+    color: #fff;
+    font-size: 35px;
+    padding: 10px 100px;
     margin-top: -2%;
   }
 
@@ -268,19 +282,19 @@ justify-content: space-around;
     font-family: "IBM Plex Sans", sans-serif;
     font-weight: 400;
     font-style: normal;
-    color: #8a2be2;
+    color: #00C4FF;
     font-size: 36px;
     margin-top: -1%;
 }
 
 h1{
-    color: #8a2be2;
+    color: #00C4FF;
 }
 
 .future-features h4{
-    color: #8a2be2;
+    color: #00C4FF;
 }
 
 h4{
-    color: #8a2be2;
+    color: #00C4FF;
 }

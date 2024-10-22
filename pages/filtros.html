@@ -80,11 +80,11 @@
                         
                         
                         if (index % 2 === 0) {
-                            resultItem.style.backgroundColor = '#F9F9F9 ';
-                            resultItem.style.color = 'black';
+                            resultItem.style.backgroundColor = '#003366 ';
+                            resultItem.style.color = 'white';
                         } else {
-                            resultItem.style.backgroundColor = '#C1C1C3';
-                            resultItem.style.color = 'black';
+                            resultItem.style.backgroundColor = '#247dd6';
+                            resultItem.style.color = 'white';
                         }
 
                         resultItem.innerHTML = `
@@ -185,6 +185,15 @@
         function formatFieldName(fieldName) {
             return fieldName.replace(/-/g, " ");
         }
+        window.addEventListener('scroll', function() {
+    const header = document.querySelector('.header'); // Corrigido o seletor
+    
+    if (window.scrollY > 0) {
+        header.classList.add('scrolled'); // Adiciona a classe quando rola a página
+    } else {
+        header.classList.remove('scrolled'); // Remove a classe quando está no topo
+    }
+});
     </script>
 
 <div class="header">
@@ -205,7 +214,7 @@
 
     <div class="container">
         <div class="logo">
-            <img src="../images/logo1.jpeg" alt="Softtek Logo">
+            <img src="../images/logo1.png" alt="Softtek Logo">
         </div>
             <h4>Filtre o Número da Task ou o Nome da Empresa para acompanhar o andamento do pedido.</h4>
             <br><br>
@@ -244,23 +253,30 @@
         }
 
         .header {
-            background-color: #323336;
-            padding: 10px;
-            box-shadow: none;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            opacity: 95%;
-        }
-
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    padding: 10px;
+    background-color: transparent;
+    transition: background-color 0.3s ease;
+    box-shadow: none; 
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    opacity: 95%;
+}
+.header.scrolled {
+    background-color: #001F3F;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+}
         .container {
             max-width: 800px;
             margin: 0 auto;
             margin-top: 120px;
             padding: 20px;
-            background-color: #ffffff;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: #001F3F;
+            box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
             text-align: center;
         }
 
@@ -271,27 +287,36 @@
         }
 
         .header .btn {
-            background-color: rgba(0, 0, 0, 0);
-            border-color: rgba(0, 0, 0, 0);
-            color: #ffffff;
+            background-color: rgba(0, 0, 0, 0.0);
+    border-color: rgba(0, 0, 0, 0.0);
+    transition: background-color 0.6s ease, padding 0.6s ease, filter 0.6s ease;
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 16px;
         }
 
         .header .btn:hover {
-            background-color: rgba(0, 0, 0, 0);
-            border-color: rgba(0, 0, 0, 0);
-            filter: brightness(110%);
-            text-decoration: underline;
-            color: #96ffb5;
+            background-color: #00C4FF;
+    padding: 10px 30px;
+    transition: background-color 0.4s ease, padding 0.4s ease, filter 0.4s ease;
+    border-color: rgba(0, 0, 0, 0.0);
+    border-radius: 10px;
+    filter: brightness(110%);
+
+    color: #fff;
         }
+
 
         .history-container {
             text-align: left;
+            background-color: #001F3F;
         }
 
         .result-item {
             margin: 15px 0;
             padding: 15px;
-            border: 1px solid #ddd;
+            border: 1px solid #0088CC ;
+            background-color: #003366;
             border-radius: 5px;
             cursor: pointer;
             transition: all 0.3s ease; 
@@ -320,7 +345,7 @@
             background-color: #fefefe;
             margin: 5% auto;
             padding: 20px;
-            border: 1px solid #888;
+            border: 0.2px solid #888;
             width: 80%;
         }
 

@@ -13,6 +13,17 @@
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <script>
+        window.addEventListener('scroll', function() {
+    const header = document.querySelector('.header'); // Corrigido o seletor
+    
+    if (window.scrollY > 0) {
+        header.classList.add('scrolled'); // Adiciona a classe quando rola a página
+    } else {
+        header.classList.remove('scrolled'); // Remove a classe quando está no topo
+    }
+});
+    </script>
     <div class="header">
         <div class="helptek-logo">
             <a href="../index.html">
@@ -30,9 +41,10 @@
     </div>
     <div class="container">
         <div class="logo">
-            <img src="../images/logo1.jpeg" alt="Softtek Logo">
+            <img src="../images/logo1.png" alt="Softtek Logo">
         </div>
         <div> 
+            <br>
             <h2>Converse com nosso Chatbot para buscar insights e solucionar sua Task!</h2>
         </div>
         
@@ -49,6 +61,20 @@
                 <input type="text" id="chat-input" class="chat-input" placeholder="Escreva sua mensagem...">
                 <button id="send-button" class="send-button"><i class="fas fa-paper-plane"></i></button>
             </div>
+        </div>
+
+        <div style="padding: 20px 60px;">
+            <p style="font-size: 20px;">Nosso <strong>Chatbot Helptek</strong> está aqui para facilitar o seu dia! 
+              <br>  Converse com ele para obter respostas rápidas e sugestões baseadas no histórico de soluções da Softtek. 
+               <br> Otimize seu tempo e resolva suas tasks com agilidade e eficiência!</p>
+               <div style="display: flex; align-items: center;">
+            <img src="../images/Chat_bot-amico.png" alt="" style=" width: 40%;">
+            <p style="padding: 10px 30px; font-size: 20px;">
+                Forneça suas dúvidas através de um contexto e obtenha uma resposta funcional sobre o problema 
+                que você busca solucionar!
+               <br><br> Atualmente a limitação de requisição para nossa inteligência artificial é de 10 requisições por minuto.
+            </p>
+        </div>
         </div>
     </div>
 
