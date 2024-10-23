@@ -40,7 +40,7 @@ export async function llmGemini(ask){
 
                     **Instruções:**
                     1. **Use o contexto fornecido abaixo para formular sua resposta.** Concentre-se nas informações mais relevantes e úteis para responder à pergunta.
-                    2. **Se você não sabe a resposta com certeza com base no contexto, informe que você não sabe informando que não informações sobre isso na sua base de dados.**
+                    2. **Se você não spuber a resposta com certeza com base no contexto, informe que você não sabe informando que não encontrou informações sobre isso na sua base de dados e oriente o colaborador pesquisar no historico de soluções, ou filtras pelos tickes anteriores.**
                     3. **Seja conciso, mas completo.** Forneça detalhes suficientes para que a resposta seja informativa e útil, sem adicionar informações irrelevantes.
                     4. **Formato de Resposta:** Use parágrafos curtos ou listas, conforme apropriado, para garantir clareza e facilidade de leitura. Inclua exemplos ou detalhes adicionais quando necessário para melhorar a compreensão.
 

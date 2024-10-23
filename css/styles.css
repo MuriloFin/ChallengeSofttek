@@ -109,9 +109,14 @@ justify-content: space-around;
 .user-message {
     background-color: #d1e7dd;
     padding: 10px;
+   
     border-radius: 10px;
     margin: 5px 0;
     text-align: right;
+}
+
+.user-message p{
+    margin: 0px;
 }
 
 .bot-message {
@@ -239,9 +244,18 @@ justify-content: space-around;
 }
 
 .bot-message {
+    border-radius: 10px;
     background-color: #e1e1e1;
     color: #333;
     align-self: flex-start;
+}
+
+.message-image {
+    width: 40px; 
+    height: 40px; 
+    border-radius: 50%;
+    margin-right: 10px;
+    padding-bottom: 4px;
 }
 
 .loading-indicator {

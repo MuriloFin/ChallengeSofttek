@@ -32,13 +32,33 @@ function sendMessage() {
 function addMessageToChat(role, content) {
     const messageElement = document.createElement('div');
     messageElement.classList.add('message', role);
-    messageElement.textContent = content;
+    
+    
+    const formattedContent = formatContent(content);
+    
+   
+    const imageUrl = role === 'bot-message' ? '../images/logo-helptek.png' : ''; 
+    messageElement.innerHTML = imageUrl ? `<img src="../images/logo-helptek.png" alt="${role}" class="message-image" /> ${formattedContent}` : formattedContent;
 
     const chatWindow = document.getElementById('chat-window');
     chatWindow.appendChild(messageElement);
-
-
     chatWindow.scrollTop = chatWindow.scrollHeight;
+}
+
+
+function formatContent(content) {
+ 
+    let formattedContent = content.replace(/\n{2,}/g, '<br /><br />'); // 
+    formattedContent = formattedContent.replace(/\n/g, '<br />'); // 
+    
+   
+    formattedContent = formattedContent.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+
+
+    formattedContent = formattedContent.replace(/(<br\s*\/?>\s*){2,}/g, '</p><p>'); 
+    formattedContent = `<p>${formattedContent}</p>`; 
+
+    return formattedContent;
 }
 
 function showLoadingIndicator(show) {
