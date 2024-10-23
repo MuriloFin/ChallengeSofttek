@@ -9,6 +9,17 @@
     <link rel="shortcut icon" type="imagex/png" href="../images/logo-helptek.ico">
 </head>
 <body>
+    <script>
+           window.addEventListener('scroll', function() {
+    const header = document.querySelector('.header'); // Corrigido o seletor
+    
+    if (window.scrollY > 0) {
+        header.classList.add('scrolled'); // Adiciona a classe quando rola a página
+    } else {
+        header.classList.remove('scrolled'); // Remove a classe quando está no topo
+    }
+});
+    </script>
     <div class="header">
         <div class="helptek-logo">
             <a href="../index.html">
